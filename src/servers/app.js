@@ -9,9 +9,12 @@ const app = express();
 //Apply middlewares
 app.use(express.json());
 
+//Connect MongoDB
+mongoose.connect(process.env.MONGO_URI)
+
 
 //Use routes
-app.use();
+app.use('/', );
 
 //Make database connection
 
