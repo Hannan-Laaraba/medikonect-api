@@ -18,4 +18,4 @@ const userSchema = new mongoose.Schema({
     medicalHistory: { type: String }
 });
 
-export const UserModel = model('User', userSchema);
+export const UserModel = mongoose.model('User', userSchema);

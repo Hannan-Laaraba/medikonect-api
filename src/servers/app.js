@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import router from "../routes/allroutes";
 
 dotenv.config();
 
@@ -14,7 +15,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 //Use routes
-app.use('/', );
+app.use(router);
 
 //Make database connection
 

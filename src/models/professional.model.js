@@ -17,4 +17,4 @@ const professionalSchema = new mongoose.Schema({
     licenceNumber: {type: Number, required: true}
 });
 
-export const ProfessionalModel = model('Professional', professionalSchema);
+export const ProfessionalModel = mongoose.model('Professional', professionalSchema);
