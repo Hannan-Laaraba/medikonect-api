@@ -1,19 +1,11 @@
-import ReviewModel from '../models/review.model'; 
+import ReviewModel from '../models/review.model.js'; 
 
 //  new review
 export const createReview = async (req, res) => {
     try {
-        const { userName, professionalsName, numericRating, reviewContent } = req.body;
-        const newReview = new ReviewModel({
-            userName,
-            professionalsName,
-            numericRating,
-            reviewContent,
-            timeStamp: new Date()
-        });
+        const newReview = await ReviewModel.create(req.body );
 
-        const savedReview = await newReview.save();
-        res.status(201).json(savedReview);
+        res.status(201).json(newReview);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -45,16 +37,9 @@ export const getReviewById = async (req, res) => {
 
 // Update review by id
 export const updateReview = async (req, res) => {
-    const { id } = req.params;
-    const { userName, professionalsName, numericRating, reviewContent } = req.body;
     try {
-        const updatedReview = await ReviewModel.findByIdAndUpdate(id, {
-            userName,
-            professionalsName,
-            numericRating,
-            reviewContent,
-            timeStamp: new Date()
-        }, { new: true });
+        const updatedReview = await ReviewModel.findByIdAndUpdate(req.body, req.params.id
+        );
         if (!updatedReview) {
             return res.status(404).json({ message: 'Review not found' });
         }

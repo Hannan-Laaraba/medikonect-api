@@ -1,4 +1,4 @@
-import { AppointmentModel } from '../models/appointment.model';
+import { AppointmentModel } from '../models/appointment.model.js';
 
 // new appointment
 export const createAppointment = async (req, res) => {
@@ -50,10 +50,8 @@ export const getAppointmentById = async (req, res) => {
 
 // update appointment with id
 export const updateAppointment = async (req, res) => {
-    const { id } = req.params;
-    const { name, doctor, date, time, reason } = req.body;
     try {
-        const updatedAppointment = await AppointmentModel.findByIdAndUpdate(id, { name, doctor, date, time, reason, updatedAt: new Date().toISOString() }, { new: true });
+        const updatedAppointment = await AppointmentModel.findByIdAndUpdate(req.body, req.params.id);
         if (!updatedAppointment) {
             return res.status(404).json({ message: 'Appointment not found' });
         }

@@ -1,17 +1,17 @@
-import SpecialtyModel from '../models/specialty.model';
+import SpecialtyModel from '../models/specialty.model.js';
 
 // new specialty
 export const createSpecialty = async (req, res) => {
     try {
-        const { category, description, provider } = req.body;
-        const newSpecialty = new SpecialtyModel({
-            category,
-            description,
-            provider
-        });
+        // const { category, description, provider } = req.body;
+        const newSpecialty = await SpecialtyModel.create(req.body
+            // category,
+            // description,
+            // provider
+        );
 
-        const savedSpecialty = await newSpecialty.save();
-        res.status(201).json(savedSpecialty);
+        // const savedSpecialty = await newSpecialty.save();
+        res.status(201).json(newSpecialty);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

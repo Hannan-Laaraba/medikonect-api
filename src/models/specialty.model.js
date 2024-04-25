@@ -6,4 +6,5 @@ const specialtySchema = new mongoose.Schema({
     provider: {type: String, required: true},
 })
 
-export const SpecialtyModel = mongoose.model('Specialty', specialtySchema);
+const SpecialtyModel = mongoose.model('Specialty', specialtySchema);
+export default SpecialtyModel

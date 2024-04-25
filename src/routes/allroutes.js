@@ -1,17 +1,18 @@
 import { Router } from "express";
-import dotenv from "dotenv";
-import express from 'express';
-import { createAppointment, getAppointments, getAppointmentById, updateAppointment, deleteAppointment } from '../controllers/appointment.controller';
-import { createReview, getReviews, getReviewById, updateReview, deleteReview } from '../controllers/review.controller';
-import { createSpecialty, getSpecialties, getSpecialtyById, updateSpecialty, deleteSpecialty } from '../controllers/specialty.controller';
+import { createAppointment, getAppointments, getAppointmentById, updateAppointment, deleteAppointment } from '../controllers/appointment.controller.js';
+import { createReview, getReviews, getReviewById, updateReview, deleteReview } from '../controllers/review.controller.js';
+import { createSpecialty, getSpecialties, getSpecialtyById, updateSpecialty, deleteSpecialty } from '../controllers/specialty.controller.js';
+import { login, signup } from "../controllers/user.controller.js";
 
-const router = express.Router();
+
+const router = Router();
 
 // signup route
 router.post('/signup', signup);
 
 // signin route
 router.post('/login', login);
+
 
 // appointments routes
 router.post('/appointments', createAppointment);
@@ -28,10 +29,10 @@ router.patch('/reviews/:id', updateReview);
 router.delete('/reviews/:id', deleteReview);
 
 // specialties routes
-router.post('/specialties', createSpecialty);
-router.get('/specialties', getSpecialties);
-router.get('/specialties/:id', getSpecialtyById);
-router.patch('/specialties/:id', updateSpecialty);
-router.delete('/specialties/:id', deleteSpecialty);
+router.post('/specialty', createSpecialty);
+router.get('/specialty', getSpecialties);
+router.get('/specialty/:id', getSpecialtyById);
+router.patch('/specialtiy/:id', updateSpecialty);
+router.delete('/specialty/:id', deleteSpecialty);
 
 export default router;

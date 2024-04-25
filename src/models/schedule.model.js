@@ -7,4 +7,5 @@ const scheduleSchema = new mongoose.Schema ({
     availability: {type: String, enum: ['yes', 'no'], required: true}
 })
 
-export const ScheduleModel = mongoose.model('Schedule', scheduleSchema);
+ const ScheduleModel = mongoose.model('Schedule', scheduleSchema);
+ export default ScheduleModel
