@@ -38,7 +38,7 @@ export const getReviewById = async (req, res) => {
 // Update review by id
 export const updateReview = async (req, res) => {
     try {
-        const updatedReview = await ReviewModel.findByIdAndUpdate(req.body, req.params.id
+        const updatedReview = await ReviewModel.findByIdAndUpdate(req.params.id, req.body
         );
         if (!updatedReview) {
             return res.status(404).json({ message: 'Review not found' });

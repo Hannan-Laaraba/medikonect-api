@@ -51,7 +51,7 @@ export const getAppointmentById = async (req, res) => {
 // update appointment with id
 export const updateAppointment = async (req, res) => {
     try {
-        const updatedAppointment = await AppointmentModel.findByIdAndUpdate(req.body, req.params.id);
+        const updatedAppointment = await AppointmentModel.findByIdAndUpdate(req.params.id,req.body);
         if (!updatedAppointment) {
             return res.status(404).json({ message: 'Appointment not found' });
         }
